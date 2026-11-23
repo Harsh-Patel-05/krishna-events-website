@@ -4,13 +4,13 @@ import InstagramIcon from '@/components/ui/InstagramIcon'
 import { announcement, site } from '@/data/site.config'
 
 const linkClass =
-  'inline-flex min-h-11 items-center gap-2 transition-colors hover:text-gold focus-visible:text-gold'
+  'inline-flex min-h-11 items-center gap-2 transition-colors hover:text-peacock-soft focus-visible:text-gold'
 
 export default function TopBar() {
   const { phones, email } = site.contact
 
   return (
-    <div className="border-b border-line bg-surface text-[0.78rem] text-mist">
+    <div className="border-b border-line bg-ink text-[0.78rem] text-mist">
       <div className="container-x flex items-center justify-between gap-4">
         <div className="flex items-center gap-x-5">
           {phones.map((p, i) => (
@@ -20,12 +20,12 @@ export default function TopBar() {
               className={`${linkClass} ${i > 0 ? 'hidden sm:inline-flex' : ''}`}
               aria-label={`Call ${p.display}`}
             >
-              <Phone className="size-3.5 text-gold" aria-hidden="true" />
+              <Phone className="size-3.5 text-peacock" aria-hidden="true" />
               {p.display}
             </a>
           ))}
           <a href={`mailto:${email}`} className={`${linkClass} hidden lg:inline-flex`}>
-            <Mail className="size-3.5 text-gold" aria-hidden="true" />
+            <Mail className="size-3.5 text-peacock" aria-hidden="true" />
             {email}
           </a>
         </div>
@@ -46,9 +46,9 @@ export default function TopBar() {
           </a>
           <Link
             to="/contact"
-            className="inline-flex min-h-11 items-center font-medium uppercase tracking-[0.2em] text-gold transition-colors hover:text-gold-soft"
+            className="inline-flex min-h-11 items-center text-sm font-medium text-gold transition-colors hover:text-peacock-soft"
           >
-            Plan Your Event
+            Plan Your Wedding
           </Link>
         </div>
       </div>

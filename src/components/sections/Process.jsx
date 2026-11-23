@@ -4,17 +4,27 @@ import { processSteps } from '@/data/site.config'
 
 export default function Process() {
   return (
-    <section className="section-y bg-surface">
+    <section className="section-y">
       <div className="container-x">
-        <SectionHeading eyebrow="How we work" title="From first conversation to final farewell." />
-        <ol className="mt-16 grid gap-10 md:grid-cols-2 lg:grid-cols-4 lg:gap-0">
+        <SectionHeading
+          eyebrow="Our process"
+          title="From first conversation to your wedding day."
+          body="Four clear steps — so you always know what comes next."
+        />
+
+        <ol className="relative mt-16 grid gap-12 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+          <div
+            aria-hidden="true"
+            className="absolute left-0 right-0 top-5 hidden h-px bg-gradient-to-r from-transparent via-gold/35 to-transparent lg:block"
+          />
           {processSteps.map((p, i) => (
-            <li key={p.step} className="relative lg:pr-10">
-              <Reveal delay={i * 0.1}>
-                <span className="gold-text font-display text-6xl">{p.step}</span>
-                <div aria-hidden="true" className="my-5 h-px w-full bg-gradient-to-r from-gold/60 to-transparent" />
-                <h3 className="font-display text-3xl text-ivory">{p.title}</h3>
-                <p className="mt-3 text-sm text-mist">{p.body}</p>
+            <li key={p.step} className="relative">
+              <Reveal delay={i * 0.07}>
+                <span className="relative z-[1] inline-flex size-10 items-center justify-center border border-gold/40 bg-ink font-display text-sm text-gold">
+                  {p.step}
+                </span>
+                <h3 className="mt-6 font-display text-xl text-ivory md:text-[1.35rem]">{p.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-mist">{p.body}</p>
               </Reveal>
             </li>
           ))}

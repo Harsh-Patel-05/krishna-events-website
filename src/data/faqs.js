@@ -1,24 +1,35 @@
-// Honest answers only — no pricing, no invented numbers.
 export const faqs = [
   {
-    q: 'Which cities do you plan events in?',
-    a: 'We celebrate in Jaipur, Udaipur, Jodhpur, Goa, Kerala, Agra, Delhi, Lucknow and Hyderabad.',
+    q: 'Where is Krishna Events based?',
+    a: 'We are based in Nava Vadaj, Ahmedabad, Gujarat — and plan weddings across Gujarat as well as destination celebrations in Goa, Bali, Phuket and more.',
   },
   {
-    q: 'Do you plan small and intimate weddings as well as large destination weddings?',
-    a: 'Yes. We plan weddings of every scale — from small and intimate to big, exotic destination weddings — and personalise each one to your taste.',
+    q: 'What do you specialise in?',
+    a: 'Wedding planning and décor with a strong focus on mesmerizing bride/groom entries, varmala concepts, sangeet and carnival themes, and complete function styling.',
   },
   {
-    q: 'Can you work within my budget?',
-    a: 'Yes. We aim to arrange cost-effective events so you get the finest within the budget guidelines you share with us. Please contact us to discuss your requirements.',
+    q: 'Which cities do you plan weddings in?',
+    a: 'Ahmedabad, Himmatnagar, Vadodara, Surat, Goa, Udaipur, Mount Abu, Bali and Phuket are common — tell us your preferred city and we will guide you.',
   },
   {
-    q: 'What services do you offer?',
-    a: 'Destination weddings, wedding planning, wedding decorations, birthday celebrations, and event production and management.',
+    q: 'Do you plan both small and large weddings?',
+    a: 'Yes. Intimate family gatherings and multi-day destination weddings both get the same personal attention — scaled to your guest list and budget.',
   },
   {
-    q: 'How do I get started?',
-    a: 'Share your event details through the form on this page, call us, or message us on WhatsApp. We will get back to you to discuss your vision.',
+    q: 'Can you work within my wedding budget?',
+    a: 'Yes. We prioritise what matters most to you — entry, décor, varmala or full planning — and design the rest so the celebration still feels complete.',
+  },
+  {
+    q: 'Do you handle destination wedding logistics?',
+    a: 'Yes. We help shortlist venues, plan multi-day schedules, coordinate local vendors and manage guest flow so destination weddings feel organised.',
+  },
+  {
+    q: 'Can you design only décor or only an entry?',
+    a: 'Absolutely. Many couples engage us for a focused entry concept, varmala setup or décor styling without full end-to-end planning.',
+  },
+  {
+    q: 'How do we get started?',
+    a: 'Call or WhatsApp us, book a consultation, or send an enquiry. Share your date, city and a rough guest count — and follow @krishna_eventss for recent work.',
   },
 ]
 

@@ -1,74 +1,53 @@
-import { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ArrowUpRight } from 'lucide-react'
 import SectionHeading from '@/components/ui/SectionHeading'
 import Reveal from '@/components/ui/Reveal'
 import { services } from '@/data/services'
-import { cn } from '@/lib/utils'
 
-/**
- * Services overview — an editorial index. Each row is a link to the detailed
- * section on /services; hovering (or focusing) a row previews its image.
- */
+/** Editorial wedding services index — text-first to avoid repeating gallery photos on Home. */
 export default function Services() {
-  const [active, setActive] = useState(0)
-
   return (
     <section className="section-y bg-surface">
       <div className="container-x">
-        <SectionHeading
-          eyebrow="What we do"
-          title="Celebrations, designed end to end."
-          body="Five disciplines, one team — from the first concept to the final farewell."
-        />
-
-        <div className="mt-16 grid gap-12 lg:grid-cols-12">
-          <ol className="lg:col-span-7">
-            {services.map((s, i) => (
-              <li key={s.id} className="border-t border-line last:border-b">
-                <Reveal delay={i * 0.05}>
-                  <Link
-                    to={`/services#${s.id}`}
-                    onMouseEnter={() => setActive(i)}
-                    onFocus={() => setActive(i)}
-                    className="group flex min-h-24 items-center gap-5 py-6 md:gap-8"
-                  >
-                    <span className="w-8 font-display text-xl text-gold/80">{String(i + 1).padStart(2, '0')}</span>
-                    <span className="flex-1">
-                      <span
-                        className={cn(
-                          'block font-display text-3xl transition-colors duration-500 md:text-4xl',
-                          active === i ? 'text-gold-soft' : 'text-ivory',
-                        )}
-                      >
-                        {s.title}
-                      </span>
-                      <span className="mt-1 block max-w-md text-sm text-mist">{s.short}</span>
-                    </span>
-                    <ArrowUpRight className="size-6 text-gold transition-transform duration-500 group-hover:-translate-y-1 group-hover:translate-x-1" />
-                  </Link>
-                </Reveal>
-              </li>
-            ))}
-          </ol>
-
-          <div className="relative hidden lg:col-span-5 lg:block">
-            <div className="sticky top-28 aspect-[4/5] overflow-hidden bg-surface-2">
-              {services.map((s, i) => (
-                <img
-                  key={s.id}
-                  src={s.image}
-                  alt={s.imageAlt}
-                  loading="lazy"
-                  className={cn(
-                    'absolute inset-0 h-full w-full object-cover transition-opacity duration-700',
-                    active === i ? 'opacity-100' : 'opacity-0',
-                  )}
-                />
-              ))}
-            </div>
-          </div>
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
+          <SectionHeading
+            eyebrow="Wedding services"
+            title="Every chapter of your wedding, designed."
+            body="From destination celebrations to mandap décor — each discipline under one wedding creative direction."
+          />
+          <Reveal>
+            <Link to="/services" className="text-link shrink-0">
+              View all services
+              <ArrowUpRight className="size-3.5" />
+            </Link>
+          </Reveal>
         </div>
+
+        <ol className="mt-14 max-w-4xl">
+          {services.map((s, i) => (
+            <li key={s.id} className="border-t border-line last:border-b">
+              <Reveal delay={i * 0.04}>
+                <Link
+                  to={`/services/${s.id}`}
+                  className="group grid grid-cols-[3rem_1fr_auto] items-center gap-3 py-5 md:gap-5 md:py-6"
+                >
+                  <span className="font-display text-base text-gold/70">
+                    {String(i + 1).padStart(2, '0')}
+                  </span>
+                  <span>
+                    <span className="block font-display text-xl text-ivory transition-colors duration-400 group-hover:text-gold md:text-2xl lg:text-[1.65rem]">
+                      {s.title}
+                    </span>
+                    <span className="mt-1.5 block max-w-md text-sm text-mist opacity-90 md:text-[0.9rem]">
+                      {s.short}
+                    </span>
+                  </span>
+                  <ArrowUpRight className="size-5 text-mist/50 transition-all duration-500 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-gold" />
+                </Link>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
       </div>
     </section>
   )

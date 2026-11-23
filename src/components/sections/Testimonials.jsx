@@ -25,19 +25,23 @@ export default function Testimonials() {
 
   return (
     <section
-      className="section-y relative overflow-hidden"
+      className="section-y section-ivory"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
       onFocus={() => setPaused(true)}
       onBlur={() => setPaused(false)}
     >
       <div className="container-x">
-        <SectionHeading eyebrow="Client love" title="In their words." />
+        <SectionHeading
+          eyebrow="Client love"
+          title="In their words."
+          body="Words from couples and families who trusted us with their wedding day."
+        />
 
-        <div className="relative mt-14 grid gap-8 md:grid-cols-12">
+        <div className="relative mt-12 grid gap-6 md:grid-cols-12 md:gap-8">
           <span
             aria-hidden="true"
-            className="gold-text pointer-events-none select-none font-display text-[9rem] leading-none md:col-span-2 md:text-[14rem]"
+            className="pointer-events-none select-none font-display text-[5rem] leading-none text-gold/50 md:col-span-2 md:text-[7rem]"
           >
             “
           </span>
@@ -46,20 +50,20 @@ export default function Testimonials() {
             <AnimatePresence mode="wait">
               <motion.figure
                 key={index}
-                initial={reduced ? false : { opacity: 0, y: 16 }}
+                initial={reduced ? false : { opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={reduced ? { opacity: 0 } : { opacity: 0, y: -16 }}
-                transition={{ duration: 0.6, ease }}
-                className="min-h-[16rem]"
+                exit={reduced ? { opacity: 0 } : { opacity: 0, y: -10 }}
+                transition={{ duration: 0.5, ease }}
+                className="min-h-[11rem]"
               >
-                <blockquote className="font-display text-3xl italic leading-snug text-ivory md:text-5xl">
+                <blockquote className="font-display text-2xl leading-snug text-ink md:text-3xl lg:text-[2.15rem]">
                   {t.quote}
                 </blockquote>
                 <figcaption className="mt-8 flex items-center gap-4">
-                  <span aria-hidden="true" className="h-px w-10 bg-gold" />
+                  <span aria-hidden="true" className="h-px w-10 bg-gold-deep/60" />
                   <span>
-                    <span className="block text-sm font-medium uppercase tracking-[0.2em] text-gold">{t.name}</span>
-                    <span className="block text-sm text-mist">{t.context}</span>
+                    <span className="block text-sm font-medium tracking-wide text-gold-deep">{t.name}</span>
+                    <span className="mt-0.5 block text-sm text-ink/55">{t.context}</span>
                   </span>
                 </figcaption>
               </motion.figure>
@@ -70,7 +74,7 @@ export default function Testimonials() {
                 type="button"
                 onClick={() => go(-1)}
                 aria-label="Previous testimonial"
-                className="grid size-12 place-items-center border border-line text-ivory transition-colors hover:border-gold hover:text-gold"
+                className="grid size-12 place-items-center border border-ink/15 text-ink transition-colors hover:border-gold-deep hover:text-gold-deep"
               >
                 <ChevronLeft className="size-5" />
               </button>
@@ -78,11 +82,11 @@ export default function Testimonials() {
                 type="button"
                 onClick={() => go(1)}
                 aria-label="Next testimonial"
-                className="grid size-12 place-items-center border border-line text-ivory transition-colors hover:border-gold hover:text-gold"
+                className="grid size-12 place-items-center border border-ink/15 text-ink transition-colors hover:border-gold-deep hover:text-gold-deep"
               >
                 <ChevronRight className="size-5" />
               </button>
-              <div className="ml-3 flex items-center">
+              <div className="ml-2 flex items-center">
                 {testimonials.map((item, i) => (
                   <button
                     key={item.name}
@@ -95,7 +99,7 @@ export default function Testimonials() {
                     <span
                       className={cn(
                         'block h-0.5 transition-all duration-500',
-                        i === index ? 'w-10 bg-gold' : 'w-5 bg-line',
+                        i === index ? 'w-10 bg-gold-deep' : 'w-5 bg-ink/20',
                       )}
                     />
                   </button>

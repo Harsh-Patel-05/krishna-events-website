@@ -1,56 +1,56 @@
 import { motion } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import Button from '@/components/ui/Button'
-import { hero, site } from '@/data/site.config'
+import { hero } from '@/data/site.config'
 import { ease } from '@/lib/animations'
 import { useReducedMotion } from '@/hooks/useReducedMotion'
 
 export default function Hero() {
   const reduced = useReducedMotion()
+
   const item = (delay) =>
     reduced
       ? {}
       : {
-          initial: { opacity: 0, y: 30 },
+          initial: { opacity: 0, y: 24 },
           animate: { opacity: 1, y: 0 },
-          transition: { duration: 1, ease, delay },
+          transition: { duration: 0.7, ease, delay },
         }
 
   return (
-    <section className="relative isolate flex min-h-[calc(100svh-7rem)] items-end overflow-hidden bg-surface">
-      <img
-        src={hero.image}
-        alt={hero.imageAlt}
-        className="kenburns absolute inset-0 -z-20 h-full w-full object-cover object-[60%_center]"
-        fetchPriority="high"
-      />
+    <section className="relative isolate flex min-h-[100svh] items-end overflow-hidden bg-ink">
+      <div className="absolute inset-0 -z-20 overflow-hidden">
+        <img
+          src={hero.image}
+          alt={hero.imageAlt}
+          width={1400}
+          height={1750}
+          className={`absolute inset-0 h-full w-full object-cover object-[58%_center] ${reduced ? '' : 'kenburns'}`}
+          fetchPriority="high"
+          decoding="async"
+        />
+      </div>
       <div className="scrim-hero absolute inset-0 -z-10" aria-hidden="true" />
-      <div
-        className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/85 via-ink/45 to-transparent"
-        aria-hidden="true"
-      />
 
-      <div className="container-x w-full pb-20 pt-32 md:pb-28">
-        <motion.p {...item(0.1)} className="eyebrow mb-6 flex items-center gap-4">
-          <span aria-hidden="true" className="h-px w-10 bg-gold/70" />
+      <div className="container-x relative z-[2] w-full pb-16 pt-28 md:pb-20 md:pt-32 lg:pb-24 lg:pt-36">
+        <motion.p {...item(0.04)} className="eyebrow mb-5 text-gold-soft/90 md:mb-6">
           {hero.eyebrow}
         </motion.p>
 
-        <motion.h1 {...item(0.2)} className="display-xl text-ivory">
-          <span className="gold-text block">{site.name}</span>
-          <span className="sr-only"> — {site.tagline}</span>
+        <motion.h1 {...item(0.12)} className="display-xl max-w-[12ch] text-white">
+          <span className="block">{hero.headline[0]}</span>
+          <span className="block italic text-warm-ivory">{hero.headline[1]}</span>
         </motion.h1>
 
-        <motion.p {...item(0.35)} className="mt-4 font-display text-2xl italic text-ivory md:text-4xl">
-          {hero.headline[0]} <span className="text-gold-soft">{hero.headline[1]}</span>
-        </motion.p>
-
-        <motion.p {...item(0.5)} className="mt-6 max-w-xl text-base text-ivory/80 md:text-lg">
+        <motion.p
+          {...item(0.22)}
+          className="mt-6 max-w-[28rem] text-[0.98rem] leading-relaxed text-white/70 md:mt-7 md:text-[1.05rem]"
+        >
           {hero.sub}
         </motion.p>
 
-        <motion.div {...item(0.65)} className="mt-10 flex flex-col gap-4 sm:flex-row">
-          <Button to={hero.primaryCta.to} size="lg">
+        <motion.div {...item(0.32)} className="mt-9 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:items-center">
+          <Button to={hero.primaryCta.to} variant="gold" size="lg">
             {hero.primaryCta.label}
           </Button>
           <Button to={hero.secondaryCta.to} variant="outline" size="lg">
@@ -62,9 +62,10 @@ export default function Hero() {
       <a
         href="#intro"
         aria-label="Scroll to introduction"
-        className="absolute bottom-6 right-6 hidden size-11 place-items-center border border-gold/40 text-gold transition-colors hover:bg-gold hover:text-ink md:grid"
+        className="scroll-indicator absolute bottom-5 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-white/45 transition-colors hover:text-white md:flex"
       >
-        <ArrowDown className="size-5" />
+        <span className="text-[0.6rem] uppercase tracking-[0.28em]">Scroll</span>
+        <ArrowDown className="size-3.5" />
       </a>
     </section>
   )

@@ -20,7 +20,7 @@ const initial = {
 function Field({ id, label, required, children }) {
   return (
     <div>
-      <label htmlFor={id} className="eyebrow block text-[0.66rem] text-mist">
+      <label htmlFor={id} className="form-label">
         {label}
         {required && <span className="text-gold"> *</span>}
       </label>
@@ -31,13 +31,13 @@ function Field({ id, label, required, children }) {
 
 function buildMessage(v) {
   const lines = [
-    'Hello Krishna Events, I would like to plan an event.',
+    'Hello Krishna Events, I would like to plan a wedding.',
     '',
     `Name: ${v.name}`,
     `Phone: ${v.phone}`,
     v.email && `Email: ${v.email}`,
-    v.eventType && `Event type: ${v.eventType}`,
-    v.date && `Event date: ${v.date}`,
+    v.eventType && `Wedding type: ${v.eventType}`,
+    v.date && `Wedding date: ${v.date}`,
     v.location && `Location / city: ${v.location}`,
     v.guests && `Approx. guests: ${v.guests}`,
     v.budget && `Budget: ${v.budget}`,
@@ -65,9 +65,11 @@ export default function ContactForm() {
   const validate = () => {
     const next = {}
     if (!values.name.trim()) next.name = 'Please tell us your name.'
+    if (!values.email.trim()) next.email = 'Email is required.'
+    else if (!/^\S+@\S+\.\S+$/.test(values.email)) next.email = 'Please enter a valid email address.'
     const digits = values.phone.replace(/\D/g, '')
     if (digits.length < 10) next.phone = 'Please enter a valid phone number (at least 10 digits).'
-    if (values.email && !/^\S+@\S+\.\S+$/.test(values.email)) next.email = 'That email doesn’t look right.'
+    if (!values.eventType) next.eventType = 'Please select a wedding type.'
     setErrors(next)
     return Object.keys(next).length === 0
   }
@@ -79,7 +81,7 @@ export default function ContactForm() {
     if (channel === 'whatsapp') {
       window.open(whatsappLink(site.contact.whatsapp, text), '_blank', 'noopener,noreferrer')
     } else {
-      const subject = `Event enquiry from ${values.name}${values.eventType ? ` — ${values.eventType}` : ''}`
+      const subject = `Wedding enquiry from ${values.name}${values.eventType ? ` — ${values.eventType}` : ''}`
       window.location.href = `mailto:${site.contact.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`
     }
     setSent(channel)
@@ -107,25 +109,26 @@ export default function ContactForm() {
         <input id="phone" name="phone" type="tel" inputMode="tel" autoComplete="tel" value={values.phone} onChange={onChange} className="field" placeholder="Your phone number" {...a11y('phone')} />
         {error('phone')}
       </Field>
-      <Field id="email" label="Email">
+      <Field id="email" label="Email address" required>
         <input id="email" name="email" type="email" autoComplete="email" value={values.email} onChange={onChange} className="field" placeholder="you@example.com" {...a11y('email')} />
         {error('email')}
       </Field>
-      <Field id="eventType" label="Event type">
-        <select id="eventType" name="eventType" value={values.eventType} onChange={onChange} className="field">
-          <option value="">Select an event</option>
+      <Field id="eventType" label="Wedding type" required>
+        <select id="eventType" name="eventType" value={values.eventType} onChange={onChange} className="field" {...a11y('eventType')}>
+          <option value="">Select wedding type</option>
           {eventTypes.map((t) => (
             <option key={t} value={t}>
               {t}
             </option>
           ))}
         </select>
+        {error('eventType')}
       </Field>
-      <Field id="date" label="Event date">
+      <Field id="date" label="Wedding date">
         <input id="date" name="date" type="date" value={values.date} onChange={onChange} className="field [color-scheme:dark]" />
       </Field>
       <Field id="location" label="Location / city">
-        <input id="location" name="location" value={values.location} onChange={onChange} className="field" placeholder="e.g. Udaipur" />
+        <input id="location" name="location" value={values.location} onChange={onChange} className="field" placeholder="e.g. Ahmedabad" />
       </Field>
       <Field id="guests" label="Approx. guests">
         <input id="guests" name="guests" inputMode="numeric" value={values.guests} onChange={onChange} className="field" placeholder="Estimated guest count" />

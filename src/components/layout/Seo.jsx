@@ -14,7 +14,9 @@ function setMeta(attr, key, content) {
 /** Sets document title + description (and matching Open Graph tags) per page. */
 export default function Seo({ title, description = site.description }) {
   useEffect(() => {
-    const full = title ? `${title} | ${site.name}` : `${site.name} — ${site.tagline} | Jaipur`
+    const full = title
+      ? `${title} | ${site.name}`
+      : `${site.name} — ${site.tagline} | ${site.location}`
     document.title = full
     setMeta('name', 'description', description)
     setMeta('property', 'og:title', full)

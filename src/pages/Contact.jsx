@@ -8,6 +8,7 @@ import WhatsAppIcon from '@/components/ui/WhatsAppIcon'
 import ContactForm from '@/components/sections/Contact'
 import FAQ from '@/components/sections/FAQ'
 import { site } from '@/data/site.config'
+import { media } from '@/data/media'
 import { whatsappLink } from '@/lib/utils'
 
 const row = 'flex items-start gap-4 border-t border-line py-5'
@@ -21,18 +22,18 @@ export default function Contact() {
     <>
       <Seo
         title="Contact"
-        description="Plan your wedding or event with Krishna Events — call, WhatsApp, email or send an enquiry. B-24, Alankar Plaza, Central Spine, Vidhayadhar Nagar, Jaipur."
+        description="Plan your wedding with Krishna Events, Ahmedabad — call, WhatsApp, email or send an enquiry."
       />
       <PageHero
         eyebrow="Contact"
         title={
           <>
-            Let’s plan your <span className="gold-text">celebration.</span>
+            Let’s plan your <span className="gold-text">wedding.</span>
           </>
         }
-        subtitle="Tell us about your event and we’ll reach out to discuss your vision and budget."
-        image="/images/gallery-01.jpg"
-        imageAlt="Heritage banquet hall with chandeliers and a marigold stage"
+        subtitle="Tell us about your wedding and we’ll reach out to discuss your vision and budget. Prefer a scheduled chat? Book a consultation."
+        image={media.pageHeroes.contact}
+        imageAlt="Sangeet celebration by Krishna Events"
         position="center 40%"
       />
 
@@ -116,9 +117,16 @@ export default function Contact() {
 
           <div className="lg:col-span-7">
             <Reveal delay={0.1}>
-              <div className="border border-line bg-surface p-6 sm:p-10">
-                <h2 className="display-md">Send an enquiry</h2>
-                <p className="mb-8 mt-3 text-mist">Share a few details — the more we know, the better we can plan.</p>
+              <div className="border-t border-line pt-2 sm:pt-4">
+                <div className="mb-10 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <h2 className="display-md">Send a wedding enquiry</h2>
+                    <p className="mt-3 text-mist">Share a few details — the more we know, the better we can plan.</p>
+                  </div>
+                  <Button to="/consultation" variant="outline-gold" size="sm">
+                    Book consultation
+                  </Button>
+                </div>
                 <ContactForm />
               </div>
             </Reveal>
@@ -126,15 +134,14 @@ export default function Contact() {
         </div>
       </section>
 
-      {/* Map — Google Maps search for the verified Jaipur address */}
       <section aria-label="Map" className="border-y border-line bg-surface">
         <div className="relative h-[24rem] w-full md:h-[30rem]">
           <iframe
-            title="Krishna Events location — B-24, Alankar Plaza, Vidhayadhar Nagar, Jaipur"
+            title="Krishna Events location — Ahmedabad, Gujarat"
             src={mapEmbed}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            className="absolute inset-0 h-full w-full border-0 [filter:grayscale(0.85)_invert(0.9)_contrast(0.9)]"
+            className="absolute inset-0 h-full w-full border-0 opacity-90"
           />
         </div>
         <div className="container-x flex flex-col items-start justify-between gap-4 py-6 sm:flex-row sm:items-center">

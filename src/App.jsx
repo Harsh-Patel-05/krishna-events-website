@@ -1,17 +1,30 @@
+import { lazy, Suspense } from 'react'
 import { BrowserRouter, Outlet, Route, Routes } from 'react-router-dom'
-import TopBar from '@/components/layout/TopBar'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import FloatingWhatsApp from '@/components/layout/FloatingWhatsApp'
 import Loader from '@/components/layout/Loader'
 import ScrollToTop from '@/components/layout/ScrollToTop'
-import SmoothScroll from '@/components/layout/SmoothScroll'
-import Home from '@/pages/Home'
-import About from '@/pages/About'
-import Services from '@/pages/Services'
-import Gallery from '@/pages/Gallery'
-import Contact from '@/pages/Contact'
-import NotFound from '@/pages/NotFound'
+
+const Home = lazy(() => import('@/pages/Home'))
+const About = lazy(() => import('@/pages/About'))
+const Services = lazy(() => import('@/pages/Services'))
+const ServiceDetail = lazy(() => import('@/pages/ServiceDetail'))
+const Weddings = lazy(() => import('@/pages/Weddings'))
+const Gallery = lazy(() => import('@/pages/Gallery'))
+const Portfolio = lazy(() => import('@/pages/Portfolio'))
+const Contact = lazy(() => import('@/pages/Contact'))
+const Consultation = lazy(() => import('@/pages/Consultation'))
+const FAQ = lazy(() => import('@/pages/FAQ'))
+const NotFound = lazy(() => import('@/pages/NotFound'))
+
+function PageFallback() {
+  return (
+    <div className="grid min-h-[50svh] place-items-center text-mist" role="status">
+      Loading…
+    </div>
+  )
+}
 
 function Layout() {
   return (
@@ -23,10 +36,11 @@ function Layout() {
         Skip to content
       </a>
       <Loader />
-      <TopBar />
       <Navbar />
       <main id="main">
-        <Outlet />
+        <Suspense fallback={<PageFallback />}>
+          <Outlet />
+        </Suspense>
       </main>
       <Footer />
       <FloatingWhatsApp />
@@ -36,16 +50,20 @@ function Layout() {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, '')}>
       <ScrollToTop />
-      <SmoothScroll />
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<Home />} />
           <Route path="about" element={<About />} />
           <Route path="services" element={<Services />} />
+          <Route path="services/:serviceId" element={<ServiceDetail />} />
+          <Route path="weddings" element={<Weddings />} />
           <Route path="gallery" element={<Gallery />} />
+          <Route path="work" element={<Portfolio />} />
           <Route path="contact" element={<Contact />} />
+          <Route path="consultation" element={<Consultation />} />
+          <Route path="faq" element={<FAQ />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

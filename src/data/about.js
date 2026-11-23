@@ -1,35 +1,39 @@
-// Summarised and cleaned from the official Krishna Events About page.
-export const about = {
-  heroImage: '/images/about-hero.jpg',
-  heroImageAlt: 'A joyful bride and groom in traditional attire',
+import { withPublicUrls } from '@/lib/publicUrl'
+
+export const about = withPublicUrls({
+  heroImage: '/images/instagram/ig-28.jpg',
+  heroImageAlt: 'Wedding celebration by Krishna Events, Ahmedabad',
 
   intro:
-    'Krishna Events is a leading wedding and event management company based in the heart of the Pink City — Jaipur, Rajasthan.',
+    'Krishna Events is a wedding planning service based in Ahmedabad, Gujarat — led by Mitesh Jain — crafting décor, grand entries and celebrations couples remember.',
 
   story: [
-    'Krishna Events began with a team of innovative, vigorous and passionate individuals, and since its inception we have aimed to produce the most creative, ground-breaking and extravagant events you have ever seen.',
-    'Our forte lies in exceptional attention to intricate detail — delivering quality events well within your budget. We plan weddings and events across the major cities of India — Delhi, Agra, Hyderabad, Jaipur, Udaipur and Goa among them — with a special love for destination weddings at exotic venues, especially in Rajasthan.',
-    'We believe in personal attention. With our dedicated and friendly team, we treat your wedding like ours while you relax and enjoy the celebrations with your near and dear ones. A good network of vendors across major cities — from invitation printing and venue selection to caterers, guest gifts and spectacular wedding themes — lets us make your big day memorable for you and your guests alike.',
-    'Whether it is a small and intimate wedding or a big, exotic destination affair, we give whatever it takes to make your day personalised and a true reflection of your taste.',
+    'We are your one-stop solution for wedding-related needs — from the first décor sketch to a mesmerizing entry on your special day.',
+    'Based in Nava Vadaj, Ahmedabad, our team plans weddings across Gujarat and destination celebrations in Goa, Bali, Phuket and beyond.',
+    'Couples come to us for statement varmalas, carnival and sangeet concepts, and décor that feels grand in the room and beautiful in photographs.',
   ],
 
-  mission:
-    'To offer a service that sets new trends in the wedding and event management industry — creating simple yet never-seen-before events while keeping the customer’s vision at the centre.',
+  whoWeAre:
+    'We are wedding planners and production partners — designing entries, décor and function flow so every celebration feels personal and complete.',
 
-  objective:
-    'To earn customer satisfaction by creating personalised, bespoke events as per your requirements — managing every event and surpassing expectations in both service and quality.',
+  vision:
+    'To be Ahmedabad’s trusted name for weddings where the entry, the décor and the emotion all feel unforgettable.',
+
+  mission:
+    'To plan and execute weddings with clear ideas, bold creative concepts and reliable on-ground teams — always centred on what matters to you and your families.',
+
+  philosophy:
+    'Every wedding has an architecture. We listen first, design with intention, and execute with care — so the day feels effortless for you and unforgettable for your guests.',
+
+  teamNote:
+    'Krishna Events is led by Mitesh Jain with a dedicated planning and production team in Ahmedabad. We travel with destination weddings when your celebration leaves the city.',
 
   qualityPolicy: {
     quote:
       'Quality in a service or a product is not what you put into it. It is what the client gets out of it.',
     attribution: 'Peter Drucker',
-    body: 'Our priority is client satisfaction through exclusive event production and management services, without compromising on quality. We craft extraordinary events with a talented, creative and dedicated team, treat your event like ours, and make sure its objective and purpose are met.',
+    body: 'Couple satisfaction comes first. We keep quality high without unnecessary spend, and we treat your wedding with the same care we would want for our own.',
   },
-
-  pillars: [
-    { title: 'Mission', key: 'mission' },
-    { title: 'Objective', key: 'objective' },
-  ],
-}
+})
 
 export default about

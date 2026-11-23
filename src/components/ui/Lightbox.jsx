@@ -23,11 +23,20 @@ export default function Lightbox({ items, index, onClose, onChange }) {
       if (e.key === 'ArrowLeft') onChange((index - 1 + total) % total)
     }
     window.addEventListener('keydown', onKey)
+
+    // Prefetch neighbors for snappy prev/next
+    ;[1, -1].forEach((dir) => {
+      const neighbor = items[(index + dir + total) % total]
+      if (!neighbor?.src) return
+      const img = new Image()
+      img.src = neighbor.src
+    })
+
     return () => {
       document.body.style.overflow = previous
       window.removeEventListener('keydown', onKey)
     }
-  }, [open, index, total, onClose, onChange])
+  }, [open, index, total, onClose, onChange, items])
 
   const item = open ? items[index] : null
 
@@ -35,7 +44,7 @@ export default function Lightbox({ items, index, onClose, onChange }) {
     <AnimatePresence>
       {open && (
         <motion.div
-          className="fixed inset-0 z-[90] flex flex-col bg-ink/95 backdrop-blur-md"
+          className="fixed inset-0 z-[90] flex flex-col bg-ink"
           role="dialog"
           aria-modal="true"
           aria-label="Image viewer"
