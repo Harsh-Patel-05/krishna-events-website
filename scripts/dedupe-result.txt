@@ -1,0 +1,2 @@
+KEEP=ig-12.jpg,ig-13.jpg,ig-14.jpg,ig-15.jpg,ig-16.jpg,ig-17.jpg,ig-18.jpg,ig-19.jpg,ig-20.jpg,ig-21.jpg,ig-22.jpg,ig-23.jpg,ig-24.jpg,ig-25.jpg,ig-26.jpg,ig-27.jpg,ig-28.jpg,ig-29.jpg,ig-30.jpg,ig-31.jpg,ig-32.jpg
+REMOVE=ig-01.jpg,ig-02.jpg,ig-03.jpg,ig-04.jpg,ig-05.jpg,ig-06.jpg,ig-07.jpg,ig-08.jpg,ig-09.jpg,ig-10.jpg,ig-11.jpg
